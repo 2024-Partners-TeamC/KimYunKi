@@ -1,0 +1,47 @@
+
+.profile {
+    object-fit: cover;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.profile {
+    font-family: 'SUIT-Regular';
+}
+
+.picture {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2E2E48;
+}
+
+.job {
+    font-size: 12px;
+    background: linear-gradient(to right, #A478E8, #516CF7);
+    color: transparent;
+    -webkit-background-clip: text;
+}
+
+.phrase {
+    font-size: 9px;
+    color: #47516B;
+}
+
+.great {
+    font-size: 6px;
+    color: #798099;
+}

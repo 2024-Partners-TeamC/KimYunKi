@@ -1,0 +1,214 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.container {
+  display: flex;
+  padding: 24px;
+  background-color: #F7F9FC;
+  width: 180px;
+  align-items: flex-start;
+}
+.Header hr {
+  background-color: #E2E6EE;
+  border-color: #E2E6EE;
+  height:1px;
+  border:0;
+}
+.appPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.container2 {
+  padding: 32px 24px 32px 16px;
+}
+.divider {
+  display: flex;
+  flex-direction: column;
+}
+.divider-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #FFF;
+  border-radius: 100%;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.04), 0px 1px 1px 0px rgba(0, 0, 0, 0.04) inset;
+}
+.divider-line {
+  border-left: solid #E2E6EE;
+  height: 100%;
+  margin-left: 8px;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.section p {
+  padding: 0;
+  margin: 0px 0px 16px 16px;
+  font-family: "Outfit", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 133.333% */
+  letter-spacing: 0.12px;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 24px 0px;
+}svg{
+    width: 200px;
+    /*상대포지션*/
+    position: relative;
+    /*z-index: 10;*/
+}
+
+#heart{
+    /*색 보충*/
+    fill: #eee;
+
+    /*stroke속성은 선, 문자, 원소등의 테두리에대해서 디자인 가능*/
+    stroke: var(--c);
+    /*선의 넓이*/
+    stroke-width: 40px;
+    /*선을 점선으로 설정, 점선의 길이 설정*/
+    stroke-dasharray: 3000;
+    /*displacement of line*/
+    stroke-dashoffset: 3000;
+    /*끝점은 둥글게*/
+    stroke-linecap: round;
+
+    
+}
+
+span{
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 50%;
+    /*절대적 포지션: center*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    /*각 방향의 쉐도우 설정*/
+    /*var함수로 쉐도우 컬러 설정*/
+    box-shadow: 0 -160px 0 var(--c),
+    0 160px 0 var(--c),
+    -160px 0 0 var(--c),
+    160px 0 0 var(--c),
+    -120px -120px 0 var(--c),
+    120px -120px 0 var(--c),
+    120px 120px 0 var(--c),
+    -120px 120px 0 var(--c);
+}
+
+/*checkbox를 클릭할 경우 애니메이션 실행*/
+#checkbox:checked + svg #heart{
+    /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
+    animation: drawHeart 1s linear forwards;
+}
+
+#checkbox:checked ~ span{
+    /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
+    animation: blink 0.5s ease-in-out forwards;
+    /*애니메이션 딜레이*/
+    animation-delay: 0.8s ;
+}
+
+#checkbox:checked + svg{
+     /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
+    animation: beat 1s linear forwards;;
+}
+label{
+    /*마우스 heart로 이동시 마우스 커서변동*/
+    cursor: pointer;
+}
+
+/*애니메이션 효과 설정*/
+/*heart 애니메이션*/
+@keyframes drawHeart{
+    0%{
+        stroke-dashoffset: 2600;
+    }
+    80%{
+        fill: #eee;
+        stroke-dashoffset: 0;
+    }
+    100%{
+        fill: var(--c);
+        stroke-dashoffset: 0;
+    }
+
+}
+/*점 애니메이션*/
+@keyframes blink{
+    0%{
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.8;
+    }
+    80%{
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0;
+    }
+}
+
+/*두근두근 애니메이션*/
+@keyframes beat {
+    0%{
+        transform: scale(1);
+    }
+    70%{
+        transform: scale(1);
+    }
+    80%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
